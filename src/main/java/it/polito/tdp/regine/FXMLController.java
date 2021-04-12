@@ -78,7 +78,7 @@ public class FXMLController {
 		if (soluzione != null) {
 			for (int row = 0; row < N; row++) {
 				int col = soluzione.get(row);
-				Label cell = caselle.get(row * N + col);
+				Label cell = caselle.get(col * N + row);
 				cell.setText("♕");
 			}
 		}
@@ -89,6 +89,6 @@ public class FXMLController {
 	void initialize() {
 		assert spinN != null : "fx:id=\"spinN\" was not injected: check your FXML file 'Scene.fxml'.";
 		assert paneScacchiera != null : "fx:id=\"paneScacchiera\" was not injected: check your FXML file 'Scene.fxml'.";
-		spinN.setValueFactory(new IntegerSpinnerValueFactory(2, 8));
+		spinN.setValueFactory(new IntegerSpinnerValueFactory(2, 20));
 	}
 }
