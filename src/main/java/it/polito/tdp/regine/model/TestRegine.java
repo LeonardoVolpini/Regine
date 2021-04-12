@@ -9,7 +9,7 @@ public class TestRegine {
 		
 		List<List<Integer>> soluzioni ;
 		soluzioni = r.risolvi(6);
-		System.out.println(soluzioni) ;
+		System.out.println(soluzioni); 
 
 	}
 	
