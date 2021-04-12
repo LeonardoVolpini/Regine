@@ -17,22 +17,22 @@ public class Regine {
 	//            [0, 2, 1]
 	
 	private int N;
-	private List<Integer> soluzione;
+	private List<List<Integer>> soluzioni;
 	
-	public List<Integer> risolvi (int N) {
+	public List<List<Integer>> risolvi (int N) {
 		this.N=N;
 		List<Integer> parziale = new ArrayList<>(); //FACCIO .get QUINDI ANZI LA ARRAYLIST CHE LA LINKEDLIST
+		this.soluzioni = new ArrayList<>();
 		//qui faro' la chiamata ricorsiva:
 		cerca(parziale,0);
-		return this.soluzione;
+		return this.soluzioni;
 	}
 	
 	//cerca=true -> soluz trovata ; cerca=false -> cerca ancora
-	private boolean cerca(List<Integer>parziale, int livello) {
+	private void cerca(List<Integer>parziale, int livello) {
 		if(livello==N) {
 			// caso terminale
-			this.soluzione= new ArrayList<>(parziale); //cosi' restituisco l'ultima soluzione valida trovata (risolvo con boolean anziche void)
-			return true; //grazie a questo non stampo piu' l'ultima soluzione, ma restituisco la prima soluzione
+			this.soluzioni.add(new ArrayList<>(parziale));
 		} else {
 			for(int colonna=0; colonna<N; colonna++) {
 				// if la possa nella casella [livello][colonna] è valida
@@ -45,13 +45,10 @@ public class Regine {
 					cerca(newParziale,livello+1);*/
 					
 					parziale.add(colonna);
-					boolean trovato =cerca(parziale,livello+1);
-					if (trovato)
-						return true;
+					cerca(parziale,livello+1);
 					parziale.remove(parziale.size()-1); //backtracking
 				}
 			}
-			return false;
 		}
 	}
 
